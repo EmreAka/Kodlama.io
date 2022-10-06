@@ -2,10 +2,13 @@ package kodlama.io.dataAccess;
 
 import kodlama.io.entities.Instructor;
 
+import java.util.List;
+
 public class HibernateInstructorDao implements InstructorDao{
     @Override
-    public void getAll() {
+    public List<Instructor> getAll() {
         System.out.println("Instructors are listed with Hibernate");
+        return InMemoryDatabase.instructors;
     }
 
     @Override

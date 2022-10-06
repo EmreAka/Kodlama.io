@@ -7,8 +7,9 @@ import java.util.List;
 public class JdbcCategoryDao implements CategoryDao{
 
     @Override
-    public void getAll() {
+    public List<Category> getAll() {
         System.out.println("Categories are listed with Jdbc");
+        return InMemoryDatabase.categories;
     }
 
     @Override

@@ -14,10 +14,10 @@ public class Main {
     public static void main(String[] args) throws Exception {
         CommandService<Course> courseAddCommandService =
                 new LoggingCommandServiceDecorator<Course>
-                        (new CourseAddManager(new HibernateCourseDao()), new DatabaseLogger());
+                        (new CourseAddManager(new JdbcCourseDao()), new DatabaseLogger());
 
         QueryService<Course> courseListQueryService =
-                new CourseListManager(new HibernateCourseDao());
+                new CourseListManager(new JdbcCourseDao());
 
         Course course1 = new Course();
         course1.setName("Emre ile Java'ya doğru.");

@@ -2,16 +2,13 @@ package kodlama.io.dataAccess;
 
 import kodlama.io.entities.Course;
 
+import java.util.List;
+
 public class HibernateCourseDao implements CourseDao{
     @Override
-    public void getAll() {
+    public List<Course> getAll() {
         System.out.println("Courses are listed with Hibernate");
-        System.out.println("*************************************************************************************");
-        for (Course course: InMemoryDatabase.courses) {
-            System.out.println("Title: "+ course.getName());
-            System.out.println("Description: " + course.getDescription());
-            System.out.println("*************************************************************************************");
-        }
+        return InMemoryDatabase.courses;
     }
 
     @Override

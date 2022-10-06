@@ -2,10 +2,13 @@ package kodlama.io.dataAccess;
 
 import kodlama.io.entities.Instructor;
 
+import java.util.List;
+
 public class JdbcInstructorDao implements InstructorDao{
     @Override
-    public void getAll() {
+    public List<Instructor> getAll() {
         System.out.println("Instructors are listed with Jdbc");
+        return InMemoryDatabase.instructors;
     }
 
     @Override

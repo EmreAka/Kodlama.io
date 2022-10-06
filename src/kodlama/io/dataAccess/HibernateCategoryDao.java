@@ -7,8 +7,9 @@ import java.util.List;
 public class HibernateCategoryDao implements CategoryDao{
 
     @Override
-    public void getAll() {
+    public List<Category> getAll() {
         System.out.println("Categories are listed with Hibernate");
+        return InMemoryDatabase.categories;
     }
 
     @Override
