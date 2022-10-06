@@ -1,7 +1,9 @@
 package kodlama.io;
 
 import kodlama.io.business.CommandService;
+import kodlama.io.business.QueryService;
 import kodlama.io.business.course.CourseAddManager;
+import kodlama.io.business.course.CourseListManager;
 import kodlama.io.core.logging.DatabaseLogger;
 import kodlama.io.core.logging.LoggingCommandServiceDecorator;
 import kodlama.io.dataAccess.HibernateCourseDao;
@@ -13,6 +15,9 @@ public class Main {
         CommandService<Course> courseAddCommandService =
                 new LoggingCommandServiceDecorator<Course>
                         (new CourseAddManager(new HibernateCourseDao()), new DatabaseLogger());
+
+        QueryService<Course> courseListQueryService =
+                new CourseListManager(new HibernateCourseDao());
 
         Course course1 = new Course();
         course1.setName("Emre ile Java'ya doğru.");
@@ -27,7 +32,6 @@ public class Main {
         courseAddCommandService.execute(course1);
         courseAddCommandService.execute(course2);
 
-        HibernateCourseDao test = new HibernateCourseDao();
-        test.getAll();
+        courseListQueryService.execute();
     }
 }
