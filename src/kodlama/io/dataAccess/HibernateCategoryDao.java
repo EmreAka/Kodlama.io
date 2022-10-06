@@ -9,13 +9,11 @@ public class HibernateCategoryDao implements CategoryDao{
     @Override
     public void getAll() {
         System.out.println("Categories are listed with Hibernate");
-
     }
 
     @Override
     public void get(int id) {
         System.out.println("Category is listed with Hibernate");
-
     }
 
     @Override
