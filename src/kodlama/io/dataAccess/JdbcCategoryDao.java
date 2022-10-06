@@ -20,6 +20,7 @@ public class JdbcCategoryDao implements CategoryDao{
     @Override
     public void add(Category entity) {
         System.out.println("Category is added with Jdbc");
+        InMemoryDatabase.categories.add(entity);
     }
 
     @Override
