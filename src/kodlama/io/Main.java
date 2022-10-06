@@ -4,12 +4,13 @@ import kodlama.io.business.CommandService;
 import kodlama.io.business.course.CourseAddManager;
 import kodlama.io.core.logging.LoggingCommandServiceDecorator;
 import kodlama.io.dataAccess.HibernateCourseDao;
+import kodlama.io.dataAccess.JdbcCourseDao;
 import kodlama.io.entities.Course;
 
 public class Main {
     public static void main(String[] args) {
         CommandService<Course> courseAddCommandService =
-                new LoggingCommandServiceDecorator<Course>(new CourseAddManager(new HibernateCourseDao()));
+                new LoggingCommandServiceDecorator<Course>(new CourseAddManager(new JdbcCourseDao()));
 
         Course course = new Course();
         course.setName("Java");
