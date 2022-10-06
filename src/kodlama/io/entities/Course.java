@@ -1,6 +1,7 @@
 package kodlama.io.entities;
 
 public class Course {
+    private int id;
     private String name;
     private double price;
     private String description;
@@ -49,5 +50,13 @@ public class Course {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
