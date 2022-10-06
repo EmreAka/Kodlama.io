@@ -2,6 +2,7 @@ package kodlama.io.entities;
 
 public class Course {
     private String name;
+    private double price;
     private Instructor instructor;
 
     private Category category;
@@ -28,5 +29,16 @@ public class Course {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) throws Exception{
+        if (price < 0)
+            throw new Exception("Price must not be lower  than zero");
+        else
+            this.price = price;
     }
 }

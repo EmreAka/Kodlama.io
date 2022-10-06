@@ -8,13 +8,14 @@ import kodlama.io.dataAccess.JdbcCourseDao;
 import kodlama.io.entities.Course;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         CommandService<Course> courseAddCommandService =
                 new LoggingCommandServiceDecorator<Course>
                         (new CourseAddManager(new JdbcCourseDao()), new DatabaseLogger());
 
         Course course = new Course();
         course.setName("Java");
+        course.setPrice(-1);
 
         courseAddCommandService.Execute(course);
     }
