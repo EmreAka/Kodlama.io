@@ -6,7 +6,6 @@ import kodlama.io.dataAccess.InMemoryDatabase;
 import kodlama.io.entities.Course;
 
 public class CourseListManager implements QueryService<Course> {
-
     private final CourseDao courseDao;
 
     public CourseListManager(CourseDao courseDao) {
