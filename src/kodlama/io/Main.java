@@ -6,6 +6,7 @@ import kodlama.io.business.course.CourseAddManager;
 import kodlama.io.business.course.CourseListManager;
 import kodlama.io.core.logging.DatabaseLogger;
 import kodlama.io.core.logging.LoggingCommandServiceDecorator;
+import kodlama.io.core.logging.LoggingQueryServiceDecorator;
 import kodlama.io.dataAccess.HibernateCourseDao;
 import kodlama.io.dataAccess.JdbcCourseDao;
 import kodlama.io.entities.Course;
@@ -17,7 +18,8 @@ public class Main {
                         (new CourseAddManager(new JdbcCourseDao()), new DatabaseLogger());
 
         QueryService<Course> courseListQueryService =
-                new CourseListManager(new JdbcCourseDao());
+                new LoggingQueryServiceDecorator<Course>
+                        (new CourseListManager(new JdbcCourseDao()), new DatabaseLogger());
 
         Course course1 = new Course();
         course1.setName("Emre ile Java'ya doğru.");
