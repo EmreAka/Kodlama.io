@@ -6,6 +6,9 @@ public class HibernateCourseDao implements CourseDao{
     @Override
     public void getAll() {
         System.out.println("Courses are listed with Hibernate");
+        for (Course course: InMemoryDatabase.courses) {
+            System.out.println(course.getName());
+        }
     }
 
     @Override
@@ -16,6 +19,7 @@ public class HibernateCourseDao implements CourseDao{
     @Override
     public void add(Course entity) {
         System.out.println("Course is added with Hibernate");
+        InMemoryDatabase.courses.add(entity);
     }
 
     @Override

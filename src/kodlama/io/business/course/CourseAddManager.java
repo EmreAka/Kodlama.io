@@ -12,7 +12,7 @@ public class CourseAddManager implements CommandService<Course> {
     }
 
     @Override
-    public void Execute(Course course) {
+    public void execute(Course course) {
         this.courseDao.add(course);
     }
 }

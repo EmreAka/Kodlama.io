@@ -12,7 +12,7 @@ public class CourseDeleteManager implements CommandService<Course> {
     }
 
     @Override
-    public void Execute(Course course) {
+    public void execute(Course course) {
         this.courseDao.delete(course);
     }
 }

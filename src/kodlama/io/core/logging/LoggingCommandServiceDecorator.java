@@ -13,9 +13,9 @@ public class LoggingCommandServiceDecorator<TCommand> implements CommandService<
     }
 
     @Override
-    public void Execute(TCommand command) {
+    public void execute(TCommand command) {
         this.logger.log("TEST");
-        this.decoratee.Execute(command);
+        this.decoratee.execute(command);
     }
 
 
