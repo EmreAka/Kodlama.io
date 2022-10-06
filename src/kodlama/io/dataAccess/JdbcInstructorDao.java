@@ -17,7 +17,7 @@ public class JdbcInstructorDao implements InstructorDao{
 
     @Override
     public void add(Instructor entity) {
-        System.out.println("Instructors is added with Jdbc");
+        InMemoryDatabase.instructors.add(entity);
     }
 
     @Override

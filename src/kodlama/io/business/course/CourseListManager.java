@@ -19,7 +19,7 @@ public class CourseListManager implements QueryService<Course> {
         for (Course course: result) {
             System.out.println("Title: "+ course.getName());
             System.out.println("Description: " + course.getDescription());
-            System.out.println("*************************************************************************************");
+            System.out.println("***************************");
         }
     }
 }

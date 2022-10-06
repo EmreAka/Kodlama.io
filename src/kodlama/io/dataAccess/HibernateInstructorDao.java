@@ -17,7 +17,7 @@ public class HibernateInstructorDao implements InstructorDao{
 
     @Override
     public void add(Instructor entity) {
-        System.out.println("Instructors is added with Hibernate");
+        InMemoryDatabase.instructors.add(entity);
     }
 
     @Override

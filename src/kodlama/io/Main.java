@@ -6,6 +6,8 @@ import kodlama.io.business.category.CategoryAddManager;
 import kodlama.io.business.category.CategoryListManager;
 import kodlama.io.business.course.CourseAddManager;
 import kodlama.io.business.course.CourseListManager;
+import kodlama.io.business.instructor.InstructorAddManager;
+import kodlama.io.business.instructor.InstructorListManager;
 import kodlama.io.core.logging.DatabaseLogger;
 import kodlama.io.core.logging.FileLogger;
 import kodlama.io.core.logging.LoggingCommandServiceDecorator;
@@ -39,6 +41,16 @@ public class Main {
         QueryService<Category> categoryListQueryService =
                 new LoggingQueryServiceDecorator<Category>(
                         new CategoryListManager(new JdbcCategoryDao()), new DatabaseLogger());
+
+
+        //INSTRUCTOR
+        CommandService<Instructor> instructorAddCommandService =
+                new LoggingCommandServiceDecorator<Instructor>(
+                        new InstructorAddManager(new JdbcInstructorDao()), new FileLogger());
+
+        QueryService<Instructor> instructorListQueryService =
+                new LoggingQueryServiceDecorator<>(
+                        new InstructorListManager(new HibernateInstructorDao()), new DatabaseLogger());
 
         System.out.println("******************************Category******************************");
         Category category1 = new Category();
@@ -80,6 +92,8 @@ public class Main {
         instructor1.setFullName("Emre AKA");
         instructor1.setCourses(courseList);
 
-        System.out.println(instructor1.getFullName());
+        instructorAddCommandService.execute(instructor1);
+
+        instructorListQueryService.execute();
     }
 }

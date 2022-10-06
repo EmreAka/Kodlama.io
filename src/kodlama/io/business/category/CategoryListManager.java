@@ -17,7 +17,7 @@ public class CategoryListManager implements QueryService<Category> {
         var result = this.categoryDao.getAll();
         for(Category category: result){
             System.out.println("Category name: "+ category.getName());
-            System.out.println("*************************************************************************************");
+            System.out.println("***************************");
         }
     }
 }
