@@ -7,7 +7,6 @@ import java.util.List;
 public class HibernateCourseDao implements CourseDao{
     @Override
     public List<Course> getAll() {
-        System.out.println("Courses are listed with Hibernate");
         return InMemoryDatabase.courses;
     }
 
@@ -18,7 +17,6 @@ public class HibernateCourseDao implements CourseDao{
 
     @Override
     public void add(Course entity) {
-        System.out.println("Course is added with Hibernate");
         InMemoryDatabase.courses.add(entity);
     }
 

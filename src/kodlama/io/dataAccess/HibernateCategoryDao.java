@@ -8,7 +8,6 @@ public class HibernateCategoryDao implements CategoryDao{
 
     @Override
     public List<Category> getAll() {
-        System.out.println("Categories are listed with Hibernate");
         return InMemoryDatabase.categories;
     }
 
@@ -19,7 +18,6 @@ public class HibernateCategoryDao implements CategoryDao{
 
     @Override
     public void add(Category entity) {
-        System.out.println("Category is added with Hibernate");
         InMemoryDatabase.categories.add(entity);
     }
 

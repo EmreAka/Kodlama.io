@@ -7,7 +7,6 @@ import java.util.List;
 public class JdbcInstructorDao implements InstructorDao{
     @Override
     public List<Instructor> getAll() {
-        System.out.println("Instructors are listed with Jdbc");
         return InMemoryDatabase.instructors;
     }
 

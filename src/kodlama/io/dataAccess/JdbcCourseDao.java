@@ -7,7 +7,6 @@ import java.util.List;
 public class JdbcCourseDao implements CourseDao{
     @Override
     public List<Course> getAll() {
-        System.out.println("Courses are listed with Jdbc");
         return InMemoryDatabase.courses;
     }
 
@@ -18,7 +17,6 @@ public class JdbcCourseDao implements CourseDao{
 
     @Override
     public void add(Course entity) {
-        System.out.println("Course is added with Jdbc");
         InMemoryDatabase.courses.add(entity);
     }
 

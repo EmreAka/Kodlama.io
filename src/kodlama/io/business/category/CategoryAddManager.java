@@ -17,8 +17,7 @@ public class CategoryAddManager implements CommandService<Category> {
         for (Category category1: categoryDao.getAll()){
             if (category1.getName().equalsIgnoreCase(category.getName()))
                 throw new Exception("Category name cannot be duplicated");
-
-            this.categoryDao.add(category);
         }
+        this.categoryDao.add(category);
     }
 }
