@@ -4,22 +4,22 @@ import java.util.List;
 
 public class Instructor {
     private int id;
-    private String instructor;
+    private String fullName;
     private List<Course> courses;
 
-    public String getInstructor() {
-        return instructor;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setInstructor(String instructor) {
-        this.instructor = instructor;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
-    public List<Course> getLessons() {
+    public List<Course> getCourses() {
         return courses;
     }
 
-    public void setLessons(List<Course> courses) {
+    public void setCourses(List<Course> courses) {
         this.courses = courses;
     }
 

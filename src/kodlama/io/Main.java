@@ -13,6 +13,10 @@ import kodlama.io.core.logging.LoggingQueryServiceDecorator;
 import kodlama.io.dataAccess.*;
 import kodlama.io.entities.Category;
 import kodlama.io.entities.Course;
+import kodlama.io.entities.Instructor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -36,6 +40,16 @@ public class Main {
                 new LoggingQueryServiceDecorator<Category>(
                         new CategoryListManager(new JdbcCategoryDao()), new DatabaseLogger());
 
+        System.out.println("******************************Category******************************");
+        Category category1 = new Category();
+        category1.setId(1);
+        category1.setName("Programlama");
+        category1.setCourses(InMemoryDatabase.courses);
+
+        categoryAddCommandService.execute(category1);
+
+        categoryListQueryService.execute();
+
         System.out.println("******************************Course******************************");
 
 
@@ -44,6 +58,7 @@ public class Main {
         course1.setName("Emre ile Java'ya doğru.");
         course1.setDescription("Java işte.");
         course1.setPrice(1);
+        course1.setCategory(category1);
 
         Course course2 = new Course();
         course1.setId(2);
@@ -56,14 +71,15 @@ public class Main {
 
         courseListQueryService.execute();
 
-        System.out.println("******************************Category******************************");
-        Category category1 = new Category();
-        category1.setId(1);
-        category1.setName("Programlama");
-        category1.setCourses(InMemoryDatabase.courses);
+        System.out.println("******************************Instructor******************************");
+        List<Course> courseList = new ArrayList<Course>();
+        courseList.add(course1);
+        courseList.add(course2);
+        Instructor instructor1 = new Instructor();
+        instructor1.setId(1);
+        instructor1.setFullName("Emre AKA");
+        instructor1.setCourses(courseList);
 
-        categoryAddCommandService.execute(category1);
-
-        categoryListQueryService.execute();
+        System.out.println(instructor1.getFullName());
     }
 }
