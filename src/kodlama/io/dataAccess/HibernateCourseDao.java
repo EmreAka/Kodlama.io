@@ -6,8 +6,11 @@ public class HibernateCourseDao implements CourseDao{
     @Override
     public void getAll() {
         System.out.println("Courses are listed with Hibernate");
+        System.out.println("*************************************************************************************");
         for (Course course: InMemoryDatabase.courses) {
-            System.out.println(course.getName());
+            System.out.println("Title: "+ course.getName());
+            System.out.println("Description: " + course.getDescription());
+            System.out.println("*************************************************************************************");
         }
     }
 

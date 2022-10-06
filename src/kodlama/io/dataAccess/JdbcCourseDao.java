@@ -6,6 +6,12 @@ public class JdbcCourseDao implements CourseDao{
     @Override
     public void getAll() {
         System.out.println("Courses are listed with Jdbc");
+        System.out.println("*************************************************************************************");
+        for (Course course: InMemoryDatabase.courses) {
+            System.out.println("Title: "+ course.getName());
+            System.out.println("Description: " + course.getDescription());
+            System.out.println("*************************************************************************************");
+        }
     }
 
     @Override
@@ -16,6 +22,7 @@ public class JdbcCourseDao implements CourseDao{
     @Override
     public void add(Course entity) {
         System.out.println("Course is added with Jdbc");
+        InMemoryDatabase.courses.add(entity);
     }
 
     @Override

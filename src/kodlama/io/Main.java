@@ -15,11 +15,13 @@ public class Main {
                         (new CourseAddManager(new HibernateCourseDao()), new DatabaseLogger());
 
         Course course1 = new Course();
-        course1.setName("Java");
+        course1.setName("Emre ile Java'ya doğru.");
+        course1.setDescription("Java işte.");
         course1.setPrice(1);
 
         Course course2 = new Course();
-        course2.setName("C#");
+        course2.setName("Emre ile C#'a doğru.");
+        course2.setDescription("Microsoft Certified Trainer (MCT) ,PMP ve ITIL sertifikalarına sahibim. Danışmanlık yaptığım kurumların bazıları : Merkez Bankası,TAI, Birleşmiş Milletler,NATO,İş Bankası, Akbank, Halkbank, Vakıfbank, Yapı Kredi Bankası, Ziraat Bankası, Emniyet, Başbakanlık, Cumhurbaşkanlığı, Hazine Müsteşarlığı, Maliye Bakanlığı, Tarım Bakanlığı, Tübitak.");
         course2.setPrice(300);
 
         courseAddCommandService.execute(course1);

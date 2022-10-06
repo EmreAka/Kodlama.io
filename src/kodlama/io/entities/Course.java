@@ -3,6 +3,7 @@ package kodlama.io.entities;
 public class Course {
     private String name;
     private double price;
+    private String description;
     private Instructor instructor;
 
     private Category category;
@@ -40,5 +41,13 @@ public class Course {
             throw new Exception("Price must not be lower  than zero");
         else
             this.price = price;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
