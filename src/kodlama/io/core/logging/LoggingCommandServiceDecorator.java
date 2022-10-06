@@ -13,7 +13,7 @@ public class LoggingCommandServiceDecorator<TCommand> implements CommandService<
     }
 
     @Override
-    public void execute(TCommand command) {
+    public void execute(TCommand command) throws Exception {
         this.logger.log("Command");
         this.decoratee.execute(command);
     }
