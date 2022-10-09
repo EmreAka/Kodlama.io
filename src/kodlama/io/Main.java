@@ -12,6 +12,7 @@ import kodlama.io.core.logging.DatabaseLogger;
 import kodlama.io.core.logging.FileLogger;
 import kodlama.io.core.logging.LoggingCommandServiceDecorator;
 import kodlama.io.core.logging.LoggingQueryServiceDecorator;
+import kodlama.io.core.utilities.ExceptionHandlingCommandServiceDecorator;
 import kodlama.io.dataAccess.*;
 import kodlama.io.entities.Category;
 import kodlama.io.entities.Course;
@@ -25,8 +26,8 @@ public class Main {
 
         //COURSE
         CommandService<Course> courseAddCommandService =
-                new LoggingCommandServiceDecorator<Course>
-                        (new CourseAddManager(new JdbcCourseDao()), new DatabaseLogger());
+                new ExceptionHandlingCommandServiceDecorator<Course>(new LoggingCommandServiceDecorator<Course>
+                        (new CourseAddManager(new JdbcCourseDao()), new DatabaseLogger()));
 
         QueryService<Course> courseListQueryService =
                 new LoggingQueryServiceDecorator<Course>
@@ -35,8 +36,8 @@ public class Main {
 
         //CATEGORY
         CommandService<Category> categoryAddCommandService =
-                new LoggingCommandServiceDecorator<Category>(
-                        new CategoryAddManager(new HibernateCategoryDao()), new FileLogger());
+                new ExceptionHandlingCommandServiceDecorator<Category>(new LoggingCommandServiceDecorator<Category>(
+                        new CategoryAddManager(new HibernateCategoryDao()), new FileLogger()));
 
         QueryService<Category> categoryListQueryService =
                 new LoggingQueryServiceDecorator<Category>(
@@ -45,8 +46,8 @@ public class Main {
 
         //INSTRUCTOR
         CommandService<Instructor> instructorAddCommandService =
-                new LoggingCommandServiceDecorator<Instructor>(
-                        new InstructorAddManager(new JdbcInstructorDao()), new FileLogger());
+                new ExceptionHandlingCommandServiceDecorator<Instructor>(new LoggingCommandServiceDecorator<Instructor>(
+                        new InstructorAddManager(new JdbcInstructorDao()), new FileLogger()));
 
         QueryService<Instructor> instructorListQueryService =
                 new LoggingQueryServiceDecorator<>(
@@ -60,7 +61,7 @@ public class Main {
 
         Category category2 = new Category();
         category2.setId(2);
-        category2.setName("ProgramlamaYedek");
+        category2.setName("Programlama");
         category2.setCourses(InMemoryDatabase.courses);
 
         categoryAddCommandService.execute(category1);
