@@ -14,10 +14,12 @@ public class CategoryAddManager implements CommandService<Category> {
 
     @Override
     public void execute(Category category) throws Exception {
-        for (Category category1: categoryDao.getAll()){
-            if (category1.getName().equalsIgnoreCase(category.getName()))
-                throw new Exception("Category name cannot be duplicated");
-        }
+        var result = categoryDao.getAll().stream()
+                .anyMatch(c -> c.getName().equalsIgnoreCase(category.getName()));
+
+        if (result)
+            throw new Exception("Category name cannot be duplicated");
+
         this.categoryDao.add(category);
     }
 }

@@ -58,7 +58,13 @@ public class Main {
         category1.setName("Programlama");
         category1.setCourses(InMemoryDatabase.courses);
 
+        Category category2 = new Category();
+        category2.setId(2);
+        category2.setName("ProgramlamaYedek");
+        category2.setCourses(InMemoryDatabase.courses);
+
         categoryAddCommandService.execute(category1);
+        categoryAddCommandService.execute(category2);
 
         categoryListQueryService.execute();
 

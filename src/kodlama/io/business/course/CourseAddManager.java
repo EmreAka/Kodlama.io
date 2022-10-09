@@ -13,10 +13,11 @@ public class CourseAddManager implements CommandService<Course> {
 
     @Override
     public void execute(Course course) throws Exception{
-        for (Course item: this.courseDao.getAll()) {
-            if (item.getName().equalsIgnoreCase(course.getName()))
-                throw new Exception("Course name cannot be duplicated");
-        }
+        var result =courseDao.getAll().stream().anyMatch(c -> c.getName().equalsIgnoreCase(course.getName()));
+
+        if (result)
+            throw new Exception("Course name cannot be duplicated");
+
         this.courseDao.add(course);
     }
 }
